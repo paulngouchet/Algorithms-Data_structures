@@ -1,0 +1,24 @@
+Problem 4 Explanation of code
+
+FOURB
+
+After exploring many ways to do it, i ended up with the way that i thought was the fastest way i could do it. The principle of my code is to find one pangram first starting from the beginning of the file. once it finds the first pangram which in the worst case will be terribly long. it saves the beginning of that pangram the index first and the last index end. with first and end it creates an object pangram that has first and end as datas and push it into a vector. After the first iteration, because we don’t want to waste time trying to go to first+1 index and doing again where we could still end up at of the same last index “end” . Instead i just start at the last index “end” and i go backward until i find a sequence that represent a pangram. Now that is the shortest pangram from the beginning to the “end” index. And i do that recursively again using a while loop where i have two for loops, one to go forward and another to go backward. After finding each pangram i push them in a vector and i sort them based of their size ( end - first ) after overloading the operator “()” to use the sort algorithm. i keep using the while until i exit with index “end” = length of the entire line ( the big file).
+
+How to i find a pangram ? By checking characters in the range ‘A’ to ‘Z’ and ‘a’ to ‘z’ if ('A' <= str[i] && str[i] <= 'Z')
+            index = str[i] - 'A';
+ 
+        
+        else if('a' <= str[i] && str[i] <= 'z')
+            index = str[i] - 'a';
+
+ 
+        used[index] = true;
+and i keep track of the letter of the alphabet in a vector<bool> where each box is a latte of the alphabet which becomes true when found false otherwise.
+
+Runtime: approximately big theta ( n^2 + constant ) so (n^2) because i have the first while loop which runs in n and the inner for loops which are just pieces of n. so approximately n^2 all the presetting of the code can be neglected because their runtime will be smaller than the worst case runtime.
+
+size of shortest pangram found is 76
+gC95jBfH9a s3YPi 4dB7C8u4lAdKMkZZPIMeE7FN3vHVbohxZolyYJlZ ZMvK 5rbH6WbsDTXy0q
+
+
+
