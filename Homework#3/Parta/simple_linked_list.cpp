@@ -21,8 +21,7 @@ public:
     void addValue(int val){
         Node *n = new Node();   // create new Node
         n->x = val;             // set value
-        n->next = head;         // make the node point to the next node.
-                                //  If the list is empty, this is NULL, so the end of the list --> OK
+        n->next = head;         // make the node point to the next node.                         //  If the list is empty, this is NULL, so the end of the list --> OK
         head = n;               // last but not least, make the head point at the new node.
     }
 
@@ -31,7 +30,6 @@ public:
     int popValue(){
         Node *n = head;
         int ret = n->x;
-
         head = head->next;
         delete n;
         return ret;
@@ -43,13 +41,11 @@ private:
 };
 
 
-int LinkedList::end()
-{   int value_final ;
+int LinkedList::end(){   
+    int value_final ;
     Node* iteration = head;
-    while(true)
-    {
-        if(iteration->next == NULL)
-        {
+    while(true){
+        if(iteration->next == NULL){
              value_final = iteration->x ;
              break; 
         }
@@ -60,11 +56,9 @@ int LinkedList::end()
 
 int main() {
     LinkedList list;
-
     list.addValue(5);
     list.addValue(10);
     list.addValue(20);
-
     cout << list.popValue() << endl;
     cout << list.popValue() << endl;
     cout << list.popValue() << endl;
