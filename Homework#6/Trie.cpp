@@ -1,80 +1,61 @@
 #include "Trie.h"
 
-
-Trie::Trie()
-{
+Trie::Trie(){
     root = new Node();
 }
 
-Trie::~Trie()
-{
+Trie::~Trie(){
     // Free memory
 }
 
-void Trie::addWord(string s)
-{
+void Trie::addWord(string s){
     Node* current = root;
-
-    if ( s.length() == 0 )
-    {
+    if (s.length() == 0 ){
         current->setWordMarker(); // an empty word
         return;
     }
 
-    for ( int i = 0; i < s.length(); i++ )
-    {        
+    for (int i = 0; i < s.length(); i++){        
         Node* child = current->findChild(s[i]);
-        if ( child != NULL )
-        {
+        if (child != NULL){
             current = child;
         }
-        else
-        {
+        else{
             Node* tmp = new Node();
             tmp->setContent(s[i]);
             current->appendChild(tmp);
             current = tmp;
         }
-        if ( i == s.length() - 1 )
+        if(i == s.length() - 1)
             current->setWordMarker();
     }
 }
 
-
-bool Trie::searchWord(string s)
-{
+bool Trie::searchWord(string s){
     Node* current = root;
-
-    while ( current != NULL )
-    {
-        for ( int i = 0; i < s.length(); i++ )
-        {
+    
+    while(current != NULL){
+        for(int i = 0; i < s.length(); i++){
             Node* tmp = current->findChild(s[i]);
-            if ( tmp == NULL )
+            if(tmp == NULL)
                 return false;
             current = tmp;
         }
-
-        if ( current->wordMarker() )
+        if(current->wordMarker())
             return true;
         else
             return false;
     }
-
     return false;
 }
 
-
 Node* Node::findChild(char c)
 {
-    for ( int i = 0; i < mChildren.size(); i++ )
-    {
+    for(int i = 0; i < mChildren.size(); i++){
         Node* tmp = mChildren.at(i);
-        if ( tmp->content() == c )
-        {
+        if(tmp->content() == c){
             return tmp;
         }
     }
-
     return NULL;
 }
