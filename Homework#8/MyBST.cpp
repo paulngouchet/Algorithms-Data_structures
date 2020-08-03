@@ -15,22 +15,18 @@
  */
 
 vector<Rotation> MyBST::transform(MyBST target) {
-
-  /*** This is what you have to do ***/
-    	
+  /*** This is what you have to do ***/    	
 }
 
 
-Node* MyBST::rotateRight(Node* Q)
-{
+Node* MyBST::rotateRight(Node* Q) {
     Node* P = Q->left;
     Q->left = P->right;
     P->right = Q;
     return P;
 }
 
-Node* MyBST::rotateLeft(Node* P)
-{
+Node* MyBST::rotateLeft(Node* P) {
     Node* Q = P->right;
     P->right = Q->left;
     Q->left = P;
