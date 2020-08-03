@@ -1,7 +1,6 @@
 //
 //  bst.cpp
 //
-
 #include "BST.h"
 
 /* constructs an empty Binary Search Tree */
